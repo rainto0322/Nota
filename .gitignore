@@ -1,0 +1,8 @@
+.DS_Store
+.env
+.env.local
+package-lock.json
+npminstall-debug.log
+
+node_modules/
+.vercel

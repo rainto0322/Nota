@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>发送POST请求示例</title>
+</head>
+
+<body>
+  <button id="sendButton">发送POST请求</button>
+  <img src="https://gitcode.net/rainto/Album/-/raw/main/daily/havefun.png" alt="Daily Image">
+  <script>
+    document.getElementById('sendButton').addEventListener('click', async function () {
+      // 请求的URL
+      const url = 'https://test.rainto.top/user/login';
+
+      // 请求体数据
+      const data = {
+        name: "admin",
+        psw: "wasd12345678"
+      };
+
+      try {
+
+        // 发送POST请求
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+
+        console.log(await response.json());
+
+      } catch (error) {
+        console.error(error);
+
+      }
+    });
+  </script>
+</body>
+
+</html>
