@@ -6,3 +6,4 @@ npminstall-debug.log
 
 node_modules/
 .vercel
+dist/
