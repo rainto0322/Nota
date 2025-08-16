@@ -1,9 +1,10 @@
-import { Elysia, Context } from "elysia";
+import { cors } from "@elysiajs/cors";
+import config from "@/config";
 
-export default (app: Elysia) =>
-  app.onAfterResponse(({ set }: Context) => {
-    set.headers['Access-Control-Allow-Origin'] = "*"
-    set.headers['Access-Control-Allow-Methods'] = "GET,POST,PUT,DELETE,OPTIONS"
-    set.headers['Access-Control-Allow-Headers'] = "Content-Type,Authorization"
-    set.headers['Content-Type'] = "text/plain; charset=utf-8"
-  })
+export default cors({
+  origin: [`http://localhost:${config.PORT}`, 'rainto.top', '*'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true,
+  exposeHeaders: [],
+  allowedHeaders: ['Content-Type', 'Authorization']
+})

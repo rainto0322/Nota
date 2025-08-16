@@ -7,17 +7,15 @@ type memoType = {
   img: [string]
 }
 
-type listType = {
-  page: number
-  size: number
-}
-
 const GetMemo: Handler = async ({ params: { id }, body }: Context) => {
   const data = await Memo.findById(id)
   return { data, ok: true, msg: "Get Memo successful" }
 }
 
-const GetMemoList: Handler = async ({ status, params: { page, size } }: Context) => {
+const GetMemoList: Handler = async ({
+  status,
+  params: { page, size }
+}: Context) => {
   const p: number = Number(page)
   const s: number = Number(size)
   const data = await Memo.find()

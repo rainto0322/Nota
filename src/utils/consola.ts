@@ -21,7 +21,11 @@ const time = () => {
 }
 
 const p = (color: string, params: string) => {
-  return `\x1b[${color}m${params}\x1b[0m`
+  if (process.env.NODE_ENV !== 'production') {
+    return `\x1b[${color}m${params}\x1b[0m`
+  } else {
+    return params
+  }
 }
 
 export const consola = {

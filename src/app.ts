@@ -3,8 +3,8 @@ import ConnectDatabase from "./database/connect";
 
 import routes from "./routes";
 // Plugins
-import errorHandle from "./plugins/error.handle";
 import logger from "./plugins/logger.handle";
+import errorHandle from "./plugins/error.handle";
 import corsHandle from "./plugins/cors.handle";
 
 // connect to mongodb
@@ -21,6 +21,5 @@ if (process.env.NODE_ENV !== 'production') {
   const { swagger } = await import('@elysiajs/swagger')
   app.use(swagger())
 }
-
 
 export default app
