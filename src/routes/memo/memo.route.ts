@@ -9,15 +9,13 @@ const memoRoute = new Elysia({ prefix: "/memo" })
   // GET /memo/:page/:size
   .get('/li/:page/:size', control.GetMemoList, schema.GetMemoListSchema)
 
-  // .use(Auth)
+  .use(Auth)
   // POST /memo
   // PARAMS: body { name, psw, email }
   .post('/', control.PostMemo, schema.MemoSchema)
-
   // PUT /memo/:id
   // PARAMS: body { name, psw, email }
   .put('/:id', control.UpdateMemo, schema.UpdateMemoSchema)
-
   // DELETE /memo/:id
   // PARAMS: body { name, psw, email }
   .delete('/:id', control.DeleteMemo, schema.DeleteMemoSchema)
