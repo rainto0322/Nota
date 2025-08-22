@@ -24,6 +24,9 @@ export const Art = defineMongooseModel(
         type: String,
       },
     ],
+    draft: {
+      type: Boolean,
+    }
   },
   options,
 );
