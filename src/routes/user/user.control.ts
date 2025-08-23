@@ -10,6 +10,24 @@ type userType = {
 }
 
 /**
+ * @fetch Get /user/init
+ */
+const Init: Handler = async ({ body }: Context) => {
+  const empty = await User.findOne({ level: 3 })
+  if (empty === null) {
+    return {
+      ok: true,
+      msg: 'Nota has not been initialized yet.'
+    };
+  } else {
+    return {
+      ok: false
+    }
+  }
+
+}
+
+/**
  * @fetch POST /user/reg
  * @body  { name, psw, email }
  */
@@ -29,6 +47,7 @@ const Register: Handler = async ({ body }: Context) => {
   const data: any = (await new User(user, { psw: 0 }).save()).toJSON()
   delete data.psw
   if (data) return {
+    ok: true,
     user: data,
     msg: `User "${user.name}" registration successful.`
   };
@@ -100,6 +119,7 @@ const Logout: Handler = async ({ status, cookie, cookie: { nota_token, nota_auth
 }
 
 export default {
+  Init,
   Register,
   Login,
   Logout
