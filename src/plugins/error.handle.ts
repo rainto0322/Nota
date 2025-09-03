@@ -8,9 +8,8 @@ interface ElysiaError {
 
 export default (app: Elysia) =>
   app.onError(({ code, status, error }) => {
-
     const msg = (error as ElysiaError).response || error.toString()
-    consola.error(msg)
+    consola.error(msg);
 
     if (code === 'NOT_FOUND') {
       return status(404, {
@@ -35,7 +34,6 @@ export default (app: Elysia) =>
         code: 409,
       })
     }
-
 
     return status(code as number, {
       msg: msg || 'Server Error! :(',

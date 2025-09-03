@@ -37,7 +37,6 @@ const UpdateMemoSchema = {
 
 const DeleteMemoSchema = {
   params: GetMemoSchema.params,
-
 }
 
 export default {

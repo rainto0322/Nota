@@ -2,17 +2,15 @@ import { Elysia, Context } from "elysia";
 import { Permissiton } from "@/utils/auth";
 
 export default (app: Elysia) =>
-  app.onBeforeHandle(async ({ status, cookie: { nota_auth, nota_token } }: Context) => {
+  app.onBeforeHandle(async ({ status, headers }: Context) => {
     try {
       // verify cookies
-      if (!nota_auth.value || !nota_token.value) {
+      const auth = headers['authorization']
+      if (!auth) {
         throw new Error("You don't have permission")
       }
-      await Permissiton(nota_token.value)
-
+      await Permissiton(auth)
     } catch (error: any) {
-      nota_token.remove()
-      nota_auth.remove()
       throw status(401, error.message)
     }
 
