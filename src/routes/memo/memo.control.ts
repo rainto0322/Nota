@@ -25,23 +25,23 @@ const GetMemoList: Handler = async ({
   if (data.length <= 0) throw status(400, "Not found moment.")
   const count = await Memo.countDocuments()
   const max = Math.ceil(count / s)
-  return { data, count, max, ok: true }
+  return { ok: true, data, count, max }
 }
 
 const PostMemo: Handler = async ({ body }: Context) => {
   const data = await new Memo(body as memoType).save()
-  return { data, msg: "Post memo successful" }
+  return { ok: true, data, msg: "Post memo successful" }
 }
 
 const UpdateMemo: Handler = async ({ params: { id }, body }: Context) => {
   const data = await Memo.findByIdAndUpdate(id, body as memoType, { new: true })
-  return { data, msg: "Update memo successful" }
+  return { ok: true, data, msg: "Update memo successful" }
 }
 
 const DeleteMemo: Handler = async ({ params: { id }, status }: Context) => {
   const data = await Memo.findByIdAndDelete(id)
   if (data === null) throw status(400, "Not found this memo")
-  return { msg: "Memo deletion successful" }
+  return { ok: true, msg: "Memo deletion successful" }
 }
 
 export default {

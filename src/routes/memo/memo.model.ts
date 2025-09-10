@@ -4,7 +4,7 @@ import { defineMongooseModel, options } from "@/utils/mongodb"
 export const Memo = defineMongooseModel('memo', {
   date: {
     type: Number,
-    default: Date.now()
+    default: Math.floor(Date.now() / 1000)
   },
   text: {
     type: String,
