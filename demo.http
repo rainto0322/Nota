@@ -8,13 +8,19 @@ Content-Type: application/json
 
 
 ###
-POST http://test.rainto.top/user/logout http/1.1
+POST http://localhost:3000/user/login http/1.1
 Content-Type: application/json
 
 {
   "name": "admin",
-  "psw": "wasd55123456"
+  "psw": "wasd12345678"
 }
 
 ### 
-GET http://localhost:3000 http/1.1
+POST http://localhost:3000/memo http/1.1
+Content-Type: application/json
+Authorization: admin.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YWFjOTIwNjdkMWUxNWE5ODlhZjhlZSIsImlhdCI6MTc1ODMzMzE1NSwiZXhwIjoxNzU4OTM3OTU1fQ.tsgGEMUH2B6xIQnTWQo8XWVsnyStySCkEXw_KTQrrm4
+
+{
+  "text": "这是"
+}

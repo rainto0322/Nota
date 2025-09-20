@@ -21,7 +21,7 @@ export default (app: Elysia) =>
 
     if (code === 'VALIDATION') {
       return status(400, {
-        msg: "Bad Request! :(",
+        msg: error.valueError?.message || "Bad Request! :(",
         ok: false,
         code: 400,
       })

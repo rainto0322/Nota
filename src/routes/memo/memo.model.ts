@@ -3,8 +3,8 @@ import { defineMongooseModel, options } from "@/utils/mongodb"
 // User Model
 export const Memo = defineMongooseModel('memo', {
   date: {
-    type: Number,
-    default: Math.floor(Date.now() / 1000)
+    type: Date,
+    default: new Date().toISOString()
   },
   text: {
     type: String,

@@ -5,19 +5,19 @@ const staticRoute = new Elysia()
     return { ok: true, msg: "Hello Nota! ʕ•̮͡•ʔ丿" };
   })
   .get("/stats", async ({ set }) => {
-    const response = await fetch('https://raw.gitcode.com/rainto/Album/raw/main/daily/fuck.png')
-    set.headers["Content-Type"] = "image/png";
-    const imageBuffer = await response.arrayBuffer();
-    return imageBuffer
-    // const db = mongoose.connection.db;
-    // const stats: any = await db?.command({ dbStats: 1 });
+    // const response = await fetch('https://raw.gitcode.com/rainto/Album/raw/main/daily/fuck.png')
+    // set.headers["Content-Type"] = "image/png";
+    // const imageBuffer = await response.arrayBuffer();
+    // return imageBuffer
+    const db = mongoose.connection.db;
+    const stats: any = await db?.command({ dbStats: 1 });
 
-    // const bytesToMB = (bytes: number) => (bytes / (1024 * 1024)).toFixed(2);
-    // return {
-    //   ok: true,
-    //   online: stats.collections || 0,
-    //   used: `${bytesToMB(stats.dataSize + stats.indexSize)} MB`
-    // }
+    const bytesToMB = (bytes: number) => (bytes / (1024 * 1024)).toFixed(2);
+    return {
+      ok: true,
+      online: stats.collections || 0,
+      used: `${bytesToMB(stats.dataSize + stats.indexSize)} MB`
+    }
   })
   .get("/favicon.ico", ({ set }) => {
     set.headers["Content-Type"] = "image/svg+xml";

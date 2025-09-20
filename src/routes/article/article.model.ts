@@ -5,8 +5,8 @@ export const Art = defineMongooseModel(
   "article",
   {
     date: {
-      type: Number,
-      default: Date.now(),
+      type: Date,
+      default: new Date().toISOString(),
     },
     title: {
       type: String,
