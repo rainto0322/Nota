@@ -27,11 +27,6 @@ const MemoSchema = {
 
 const UpdateMemoSchema = {
   params: GetMemoSchema.params,
-  body: t.Object({
-    date: t.Number(),
-    text: t.String({ minLength: 5, maxLength: 500 }),
-    img: t.Array(t.String()),
-  })
 }
 
 const DeleteMemoSchema = {

@@ -12,6 +12,6 @@ const userRoute = new Elysia({ prefix: "/user" })
 
   // CURL: POST /user/login
   // PARAMS: body { name, psw }
-  .post('/login', control.Login, schema.LoginSchema)
+  .post('/login', control.Login)
 
 export default userRoute

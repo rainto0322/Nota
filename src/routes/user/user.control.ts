@@ -69,11 +69,11 @@ const Login: Handler = async ({
     // login use token
     try {
       const { user } = await VerifyToken(auth) as {
-        user: { name: string, psw?: string }
+        user: { _id: string, name: string, psw?: string }
       }
       // set auth token
       delete user.psw
-      return { user, token: auth, ok: true, msg: `${user.name} token login successful` }
+      return { user, token: ConvertToken(user.name, user._id), ok: true, msg: `${user.name} token login successful` }
     } catch (error: any) {
       throw status(401, error.message)
     }
