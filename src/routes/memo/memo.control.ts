@@ -2,7 +2,7 @@ import { Handler, Context } from "elysia";
 import { Memo } from "./memo.model";
 
 type memoType = {
-  date: number | undefined
+  date: string
   text: string
   img: [string]
 }
@@ -30,7 +30,7 @@ const GetMemoList: Handler = async ({
 
 const PostMemo: Handler = async ({ body }: Context) => {
   const data = await new Memo(body as memoType).save()
-  return { ok: true, data, msg: "Post memo successful" }
+  return { ok: true, body, msg: "Post memo successful" }
 }
 
 const UpdateMemo: Handler = async ({ params: { id }, body }: Context) => {

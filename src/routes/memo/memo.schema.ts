@@ -21,6 +21,8 @@ const GetMemoListSchema = {
 
 const MemoSchema = {
   body: t.Object({
+    date: t.Optional(t.String()),
+    img: t.Optional(t.Array(t.String())),
     text: t.String({ minLength: 5, maxLength: 500 }),
   })
 }
