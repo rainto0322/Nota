@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "bun run --hot ./index.ts",
     "start": "bun ./dist/app.js",
-    "build": "NODE_ENV=production bun build ./src/app.ts --outdir ./dist --minify --target node",
+    "serve:build": "NODE_ENV=production bun build ./src/app.ts --outdir ./dist --minify --target node",
     "vercel:dev": "bun run build && vercel dev"
   },
   "devDependencies": {
@@ -24,7 +24,7 @@
     "consola": "^3.4.2",
     "dayjs": "^1.11.13",
     "jsonwebtoken": "^9.0.2",
-        "mongoose": "^8.17.0",
+    "mongoose": "^8.17.0",
     "vercel": "^44.7.3"
   },
   "dependencies": {
