@@ -9,7 +9,7 @@ const memoRoute = new Elysia({ prefix: "/memo" })
   // GET /memo/:page/:size
   .get('/li/:page/:size', control.GetMemoList, schema.GetMemoListSchema)
 
-  // .use(Auth)
+  .use(Auth)
   // POST /memo
   // PARAMS: body { name, psw, email }
   .post('/', control.PostMemo, schema.MemoSchema)

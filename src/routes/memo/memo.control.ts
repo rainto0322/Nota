@@ -30,7 +30,7 @@ const GetMemoList: Handler = async ({
 
 const PostMemo: Handler = async ({ body }: Context) => {
   const data = await new Memo(body as memoType).save()
-  return { ok: true, body, msg: "Post memo successful" }
+  return { ok: true, data, msg: "Post memo successful" }
 }
 
 const UpdateMemo: Handler = async ({ params: { id }, body }: Context) => {
